@@ -7,17 +7,15 @@ import { getCollection } from "astro:content";
 
 const base = import.meta.env.BASE_URL || "/";
 
-const SAATCHI_PROFILE_URL = "https://www.saatchiart.com/en-au/solara-meridian-studio/";
-
-// IMPORTANT: set this to your actual Redbubble store URL (keep it quiet + secondary).
-const REDBUBBLE_URL = "https://www.redbubble.com/";
+const SAATCHI_URL = "https://www.saatchiart.com/en-au/solara-meridian-studio/";
+const REDBUBBLE_URL = "https://www.redbubble.com/people/SamFrederiksen/shop/";
+const DOWNLOAD_URL = "https://resethaven.gumroad.com//";
 
 const articles = (await getCollection("articles"))
   .sort((a, b) => (b.data.publishedAt as Date).getTime() - (a.data.publishedAt as Date).getTime())
   .slice(0, 3);
 
 // Homepage featured works
-// Your files exist at: public/images/art/origin-forms/origin-forms-01.jpg etc.
 // On GitHub Pages project sites, use BASE_URL so it becomes /solara-meridian-studio/images/...
 const featuredArtworks = [
   {
@@ -84,31 +82,30 @@ const featuredArtworks = [
 ---
 
 <BaseLayout
-  title="Solara Meridian Studio"
-  description="A visual language that holds attention quietly."
+  title="ResetHaven"
+  description="Life Improvement Plan."
 >
   <!-- HERO -->
   <section class="hero">
     <div class="container hero__inner">
       <div>
-        <div class="hero__kicker">Solara Meridian Studio</div>
+        <div class="hero__kicker">Reset Haven</div>
         <h1 class="hero__title">
-          A visual language that holds attention quietly.
+          Steps to change your life forever
         </h1>
         <p class="hero__subtitle">
-          Composed works defined by restraint, balance, and subtle tension—designed to reward a second look rather than resolve themselves immediately.
+          Sensible, balanced, and highly effective.
         </p>
         <p class="hero__subtitle">
-         Each body of work is developed to feel complete without needing explanation.
-        </p>
+         Each Module is developed logically to feel like you accomplished something useful.        </p>
         <div class="hero__actions">
-          <a class="btn btn--primary btn--block-mobile" href={`${base}art/`}>Explore the collection</a>
-          <a class="btn btn--ghost btn--block-mobile" href={`${base}articles/`}>Read studio notes</a>
-          <a class="btn btn--ghost btn--block-mobile" href={`${base}about/`}>About the studio</a>
+          <a class="btn btn--primary btn--block-mobile" href={`${base}LifeResetPro/`}>Quick Start</a>
+          <a class="btn btn--ghost btn--block-mobile" href={`${base}articles/`}>Learn More</a>
+          <a class="btn btn--ghost btn--block-mobile" href={`${base}about/`}>About the ResetHaven</a>
         </div>
 
         <div class="hero__meta">
-          Purchases and fulfilment are handled securely through Saatchi Art.
+          Purchases and fulfilment are handled securely through Gumroad.
         </div>
       </div>
 
