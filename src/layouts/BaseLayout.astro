@@ -22,8 +22,9 @@ const isActive = (href) => {
 };
 
 // Saatchi profile
-const SAATCHI_PROFILE_URL = "https://www.saatchiart.com/en-au/solara-meridian-studio";
-
+const SAATCHI_URL = "https://www.saatchiart.com/en-au/solara-meridian-studio";
+const REDBUBBLE_URL = "https://www.redbubble.com/people/SamFrederiksen/shop";
+const DOWNLOADS_URL = "https://resethaven.gumroad.com/";
 // Canonical URL
 const SITE_ORIGIN = "https://u1142715-hub.github.io";
 const canonicalPath = `${pathname.endsWith("/") ? pathname : pathname + "/"}`;
@@ -41,32 +42,22 @@ const canonical = `${SITE_ORIGIN}${canonicalPath}`;
 
     <!-- Public asset served by Astro from /public/styles/global.css -->
     <link rel="stylesheet" href={`${base}/styles/global.css`} />
-
-    <meta name="google-site-verification" content="R7O3CfxGVvxQmoYnaKRl21mB7TsX8jjZqZ-3WdfWl2w" />
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7WJZBG8VT3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7WJZBG8VT3');
-    </script>
   </head>
 
   <body>
     <div class="site-shell">
       <header class="site-header">
         <div class="container site-header__inner">
-          <a class="site-brand" href={`${base}/`}>SOLARA MERIDIAN STUDIO</a>
+          <a class="site-brand" href={`${base}/`}>ResetHaven</a>
 
           <nav class="nav">
-            <a class={isActive("/art/")} href={`${base}/art/`}>Art</a>
+            <a class={isActive("/pdf/")} href={`${base}/pdf/`}>PDF</a>
+            <a class={isActive("/software/")} href={`${base}/software/`}>Software</a>
             <a class={isActive("/articles/")} href={`${base}/articles/`}>Articles</a>
             <a class={isActive("/about/")} href={`${base}/about/`}>About</a>
 
-            <a class="nav__cta" href={SAATCHI_PROFILE_URL} target="_blank" rel="noopener noreferrer">
-              SAATCHI PROFILE
+            <a class="nav__cta" href={DOWNLOADS_URL} target="_blank" rel="noopener noreferrer">
+              Download
             </a>
           </nav>
         </div>
@@ -83,7 +74,8 @@ const canonical = `${SITE_ORIGIN}${canonicalPath}`;
           <div class="site-footer__links">
             <a href={`${base}/about/`}>About</a>
             <a href={`${base}/articles/`}>Articles</a>
-            <a href={`${base}/art/`}>Art</a>
+            <a href={`${base}/pdf/`}>PDF</a>
+            <a href={`${base}/software/`}>Software</a>
             <a href={`${base}/provenance/`}>Provenance</a>
           </div>
         </div>
