@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Print Works";
+const description = "Redirecting to print-based works.";
+// Kept out of visible UI; JS handles redirect. Low-key, minimal exposure.
+const REDBUBBLE_URL = "https://www.redbubble.com/people/SamFrederiksen/shop";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="redirect-shell" aria-label="Redirecting to print works">
+    <h1 class="redirect-title">Print Works</h1>
+    <p class="redirect-text">Redirecting…</p>
+
+    <button class="redirect-button" type="button" id="go">Continue</button>
+
+    <noscript>
+      <p class="redirect-text">
+        JavaScript is required to continue. Please enable it and reload this page.
+      </p>
+      <p class="redirect-text">
+        If you cannot enable JavaScript, use this link:
+        <a class="redirect-link" href={REDBUBBLE_URL} rel="nofollow noopener noreferrer" target="_blank">
+          Open print-based works
+        </a>
+      </p>
+    </noscript>
+  </section>
+
+  <script is:inline>
+    (function () {
+      // Assemble URL to keep it low-key in the rendered UI.
+      const u = "https://www.redbubble.com/people/" + "SamFrederiksen" + "/shop";
+      const go = () => { window.location.replace(u); };
+
+      // Auto-redirect quickly
+      setTimeout(go, 300);
+
+      // Manual fallback button
+      const btn = document.getElementById("go");
+      if (btn) btn.addEventListener("click", go);
+    })();
+  </script>
+
+  <style>
+    .redirect-shell {
+      max-width: 64ch;
+      margin: 0 auto;
+      padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.25rem);
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.02);
+    }
+    .redirect-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin: 0 0 0.75rem;
+    }
+    .redirect-text {
+      opacity: 0.85;
+      line-height: 1.7;
+      margin: 0 0 1rem;
+    }
+    .redirect-button {
+      margin-top: 0.5rem;
+      padding: 0.75rem 1.1rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      cursor: pointer;
+    }
+    .redirect-link {
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+    }
+  </style>
+</BaseLayout>

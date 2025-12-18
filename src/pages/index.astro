@@ -1,0 +1,237 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import ArticleList from "../components/content/ArticleList.astro";
+import ArtworkCarousel from "../components/content/ArtworkCarousel.astro";
+import { getCollection } from "astro:content";
+
+const base = import.meta.env.BASE_URL || "/";
+
+const SAATCHI_PROFILE_URL = "https://www.saatchiart.com/en-au/solara-meridian-studio/";
+
+// IMPORTANT: set this to your actual Redbubble store URL (keep it quiet + secondary).
+const REDBUBBLE_URL = "https://www.redbubble.com/";
+
+const articles = (await getCollection("articles"))
+  .sort((a, b) => (b.data.publishedAt as Date).getTime() - (a.data.publishedAt as Date).getTime())
+  .slice(0, 3);
+
+// Homepage featured works
+// Your files exist at: public/images/art/origin-forms/origin-forms-01.jpg etc.
+// On GitHub Pages project sites, use BASE_URL so it becomes /solara-meridian-studio/images/...
+const featuredArtworks = [
+  {
+    id: "origin-forms-01",
+    data: {
+      title: "Origin Forms I",
+      slug: "origin-forms-i",
+      thumbnail: `${base}images/art/origin-forms/origin-forms-01.jpg`,
+      saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-First-Emergence/2900417/13413289/view",
+      alt: "Abstract contemporary figurative artwork with simplified black form on warm stone-toned background, exploring emergence, balance, and visual curiosity.",
+    },
+  },
+  {
+    id: "origin-forms-02",
+    data: {
+      title: "Origin Forms II",
+      slug: "origin-forms-ii",
+      thumbnail: `${base}images/art/origin-forms/origin-forms-02.jpg`,
+      saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-Second-Emergence/2900417/13415099/view",
+      alt: "Abstract contemporary figurative artwork with simplified black form on warm stone-toned background, exploring emergence, balance, and visual curiosity.",
+    },
+  },
+  {
+    id: "origin-forms-03",
+    data: {
+      title: "Origin Forms III",
+      slug: "origin-forms-iii",
+      thumbnail: `${base}images/art/origin-forms/origin-forms-03.jpg`,
+      saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-Third-Emergence-Origin-Collection/2900417/13415119/view",
+      alt: "Abstract contemporary figurative artwork with simplified black form on warm stone-toned background, exploring emergence, balance, and visual curiosity.",
+    },
+  },
+  {
+    id: "quiet-resilience-01",
+    data: {
+      title: "Quiet Resilience I",
+      slug: "quiet-resilience-i",
+      thumbnail: `${base}images/art/origin-forms/origin-forms-04.jpg`,
+      saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-Quiet-Resilience-I/2900417/13430619/view",
+      alt: "Abstract contemporary figurative artwork in dark marble tones with gold veining, composed for calm presence and sustained attention.",
+    },
+  },
+  {
+    id: "quiet-resilience-02",
+    data: {
+      title: "Quiet Resilience II",
+      slug: "quiet-resilience-ii",
+      thumbnail: `${base}images/art/origin-forms/origin-forms-05.jpg`,
+      saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-Quiet-Resilience-II/2900417/13430649/view",
+      alt: "Abstract contemporary figurative artwork in dark marble tones with gold veining, composed for calm presence and sustained attention.",
+    },
+  },
+  {
+    id: "quiet-resilience-03",
+    data: {
+      title: "Quiet Resilience III",
+      slug: "quiet-resilience-iii",
+      thumbnail: `${base}images/art/origin-forms/origin-forms-06.jpg`,
+      saatchiUrl: "https://www.saatchiart.com/en-au/art/Digital-Quiet-Resilience-III/2900417/13430661/view",
+      alt: "Abstract contemporary figurative artwork in dark marble tones with gold veining, composed for calm presence and sustained attention.",
+    },
+  },
+];
+---
+
+<BaseLayout
+  title="Solara Meridian Studio"
+  description="A visual language that holds attention quietly."
+>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div>
+        <div class="hero__kicker">Solara Meridian Studio</div>
+        <h1 class="hero__title">
+          A visual language that holds attention quietly.
+        </h1>
+        <p class="hero__subtitle">
+          Composed works defined by restraint, balance, and subtle tension—designed to reward a second look rather than resolve themselves immediately.
+        </p>
+        <p class="hero__subtitle">
+         Each body of work is developed to feel complete without needing explanation.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--block-mobile" href={`${base}art/`}>Explore the collection</a>
+          <a class="btn btn--ghost btn--block-mobile" href={`${base}articles/`}>Read studio notes</a>
+          <a class="btn btn--ghost btn--block-mobile" href={`${base}about/`}>About the studio</a>
+        </div>
+
+        <div class="hero__meta">
+          Purchases and fulfilment are handled securely through Saatchi Art.
+        </div>
+      </div>
+
+      <div class="hero__media">
+        <div class="hero__media-inner">
+          <div class="card">
+            <div class="card__eyebrow">Current flagship series</div>
+            <div class="card__title">The Origin Forms</div>
+            <p class="card__body">
+              A first release defined by restraint, balance, and subtle visual tension—composed to feel complete without immediate resolution. Each work sits confidently in space, rewarding sustained attention rather than instant comprehension.
+            </p>
+            <p class="card__body">
+              Alongside the flagship Origin Forms, the studio is expanding with Quiet Resilience—a composed figurative series exploring calm endurance and emotional gravity.
+            </p>
+            <div class="mt-2">
+              <a class="btn btn--subtle btn--block" href={`${base}art/`}>View featured works</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY / BENEFITS -->
+  <Section variant="alt">
+    <div class="container">
+      <div class="section__heading">
+        <div class="section__eyebrow">Why collectors respond</div>
+        <h2 class="section__title">Scarcity through judgement, not output volume.</h2>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card">
+          <div class="card__title">Deliberate visual resolution</div>
+          <p class="card__body">
+           Each work is brought to a point where it feels complete as a whole. 
+           Coherence is prioritised over novelty, allowing the image to hold attention without excess.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card__title">Restraint as a signature</div>
+          <p class="card__body">
+            Precision without coldness; complexity without noise. 
+            The work reveals itself gradually rather than competing for attention.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card__title">Collector-ready presentation</div>
+          <p class="card__body">
+            Clear framing, consistent editions, and a focused acquisition path that keeps attention on the work itself.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- FEATURED WORKS -->
+  <Section>
+    <div class="container">
+      <div class="section__heading">
+        <div class="section__eyebrow">Featured works</div>
+        <h2 class="section__title">A small selection from the studio’s current limited-edition collections</h2>
+      </div>
+
+      <ArtworkCarousel artworks={featuredArtworks} label="Featured works from The Origin Forms" />
+
+      <div class="mt-3 text-center">
+        <a class="btn btn--primary btn--block-mobile" href={`${base}art/`}>Explore the full presentation</a>
+        <a class="btn btn--ghost btn--block-mobile" href={`${base}provenance/`}>Provenance & authenticity</a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ROUTING / STORES (PRIMARY + SOFT OVERFLOW) -->
+  <Section variant="alt">
+    <div class="container">
+      <div class="cta">
+        <div class="cta__eyebrow">Collect</div>
+        <div class="cta__title">Explore availability and purchase securely through Saatchi Art.</div>
+        <p class="cta__body">
+          The art page is the canonical presentation. Saatchi Art handles secure checkout, edition enforcement, and delivery.
+        </p>
+
+        <div class="mt-2">
+          <a class="btn btn--primary btn--block-mobile" href={`${base}art/`}>Go to the art page</a>
+          <a
+            class="btn btn--ghost btn--block-mobile"
+            href={SAATCHI_PROFILE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Saatchi Art profile
+          </a>
+        </div>
+
+        <p class="cta__body" style="margin-top: 1rem; opacity: 0.85;">
+          Separately, the studio also maintains a print-on-demand shop on{" "}
+          <a href="https://www.redbubble.com/people/SamFrederiksen/shop" target="_blank" rel="noopener noreferrer">
+            Redbubble
+          </a>
+          {" "}featuring distinct designs created specifically for that format.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ARTICLES (SUPPORTING DISCOVERY LAYER) -->
+  {articles.length > 0 && (
+    <Section>
+      <div class="container">
+        <div class="section__heading">
+          <div class="section__eyebrow">Studio notes</div>
+          <h2 class="section__title">Context that routes back to the work.</h2>
+        </div>
+
+        <ArticleList articles={articles} />
+
+        <div class="mt-3 text-center">
+          <a class="btn btn--ghost btn--block-mobile" href={`${base}articles/`}>View all articles</a>
+        </div>
+      </div>
+    </Section>
+  )}
+</BaseLayout>
