@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://github.com/u1142715-hub/resethaven/sitemap-index.xml
+

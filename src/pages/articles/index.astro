@@ -1,0 +1,276 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+
+const allArticles = await getCollection("articles");
+const sorted = allArticles.sort((a, b) => b.data.publishedAt - a.data.publishedAt);
+const hasArticles = sorted.length > 0;
+
+// Featured selection: use frontmatter `featured: true` if present, otherwise latest.
+const featured = sorted.find((a) => a.data?.featured === true) ?? sorted[0];
+
+// Remaining articles (exclude featured if it exists)
+const rest = featured ? sorted.filter((a) => a.id !== featured.id) : sorted;
+
+// Group remaining into clusters of 3
+const groups = [];
+for (let i = 0; i < rest.length; i += 3) groups.push(rest.slice(i, i + 3));
+
+const articleHref = (slug) => `${base}/articles/${slug}/`;
+---
+
+<BaseLayout title="Articles" description="Guides, insights, and resources.">
+  <section class="articles-header">
+    <h1>Articles</h1>
+    <p>Guides, insights, and resources across Art.</p>
+  </section>
+
+  {hasArticles ? (
+    <main class="articles">
+      {/* Reading Hero (Featured) */}
+      {featured ? (
+        <section class="reading-hero" aria-label="Featured article">
+          <a class="reading-hero__hit" href={articleHref(featured.slug)} aria-label={`Read: ${featured.data.title}`}>
+            <div class="reading-hero__kicker">Featured reading</div>
+            <h2 class="reading-hero__title">{featured.data.title}</h2>
+            {featured.data.description ? (
+              <p class="reading-hero__desc">{featured.data.description}</p>
+            ) : null}
+            <div class="reading-hero__meta" aria-hidden="true">
+              <span class="micro-cta micro-cta--hero">Read</span>
+            </div>
+          </a>
+        </section>
+      ) : null}
+
+      {/* Clusters of 3 + accent breakers */}
+      <section class="articles-list" aria-label="All articles">
+        {groups.map((group, groupIndex) => {
+          const articlesSeen = (groupIndex + 1) * 3; // counts in the grouped list
+          const isChapterBreak = articlesSeen % 9 === 0; // every 3 groups of 3 (9)
+
+          return (
+            <div class="articles-cluster">
+              <div class="articles-cluster__grid">
+                {group.map((a) => (
+                  <article class="article-card">
+                    <a class="article-card__hit" href={articleHref(a.slug)} aria-label={`Read: ${a.data.title}`}>
+                      <h3 class="article-card__title">{a.data.title}</h3>
+                      {a.data.description ? (
+                        <p class="article-card__desc">{a.data.description}</p>
+                      ) : null}
+                      <div class="article-card__meta" aria-hidden="true">
+                        <span class="micro-cta">Read</span>
+                      </div>
+                    </a>
+                  </article>
+                ))}
+              </div>
+
+              <div
+                class:list={[
+                  "articles-break",
+                  isChapterBreak ? "articles-break--chapter" : "articles-break--minor",
+                ]}
+                aria-hidden="true"
+              />
+            </div>
+          );
+        })}
+      </section>
+    </main>
+  ) : (
+    <section class="articles-empty" aria-label="No articles yet">
+      <p class="articles-empty__title">No articles published yet.</p>
+      <p class="articles-empty__text">
+        The first guide is being prepared. For now, you can explore the current body of work.
+      </p>
+      <p class="articles-empty__action">
+        <a class="articles-empty__link" href={`${base}/art/`}>View the work</a>
+      </p>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .articles-header {
+    padding: var(--space-4) 0;
+    text-align: center;
+  }
+  .articles-header h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .articles {
+    padding: var(--space-2) 0 var(--space-6);
+  }
+
+  :global(:root) {
+    --sms-accent: var(--color-accent, var(--accent, rgba(214, 179, 106, 1)));
+  }
+
+  /* Reading Hero */
+  .reading-hero {
+    max-width: 72ch;
+    margin: 0 auto var(--space-5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.02);
+    position: relative;
+    overflow: hidden;
+  }
+  .reading-hero::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 14px;
+    pointer-events: none;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 0 28px rgba(214, 179, 106, 0.09);
+  }
+  .reading-hero__hit {
+    display: block;
+    padding: var(--space-5);
+    text-decoration: none;
+    color: inherit;
+  }
+  .reading-hero__hit:hover,
+  .reading-hero__hit:focus-visible {
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .reading-hero__kicker {
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin: 0 0 var(--space-2);
+  }
+  .reading-hero__title {
+    margin: 0 0 var(--space-2);
+    font-size: var(--font-size-2xl);
+    line-height: 1.15;
+  }
+  .reading-hero__desc {
+    margin: 0;
+    opacity: 0.88;
+    line-height: 1.7;
+  }
+  .reading-hero__meta {
+    margin-top: var(--space-3);
+  }
+
+  /* Article list */
+  .articles-list {
+    max-width: 72ch;
+    margin: 0 auto;
+  }
+
+  .articles-cluster {
+    margin: 0 0 var(--space-4);
+  }
+
+  .articles-cluster__grid {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .article-card {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .article-card__hit {
+    display: block;
+    padding: var(--space-4);
+    text-decoration: none;
+    color: inherit;
+  }
+  .article-card__hit:hover,
+  .article-card__hit:focus-visible {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .article-card__title {
+    margin: 0 0 var(--space-2);
+    font-size: var(--font-size-lg);
+    line-height: 1.25;
+  }
+
+  .article-card__desc {
+    margin: 0;
+    opacity: 0.85;
+    line-height: 1.7;
+  }
+
+  .article-card__meta {
+    margin-top: var(--space-3);
+  }
+
+  /* Micro-CTA pill */
+  .micro-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.6rem;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    border: 1px solid rgba(214, 179, 106, 0.35);
+    color: rgba(214, 179, 106, 0.95);
+    background: rgba(214, 179, 106, 0.06);
+    box-shadow: 0 0 18px rgba(214, 179, 106, 0.10);
+  }
+  .micro-cta--hero {
+    border-color: rgba(214, 179, 106, 0.45);
+    background: rgba(214, 179, 106, 0.07);
+    box-shadow: 0 0 22px rgba(214, 179, 106, 0.14);
+  }
+
+  /* Breakers */
+  .articles-break {
+    width: 100%;
+    margin: var(--space-4) 0 0;
+    border-radius: 999px;
+    background: var(--sms-accent);
+    opacity: 0.35;
+  }
+  .articles-break--minor {
+    height: 1px;
+  }
+  .articles-break--chapter {
+    height: 2px;
+    margin-top: var(--space-5);
+    opacity: 0.55;
+  }
+
+  /* Empty-state */
+  .articles-empty {
+    max-width: 72ch;
+    margin: var(--space-6) auto 0;
+    padding: var(--space-5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .articles-empty__title {
+    margin: 0 0 var(--space-2);
+    font-size: var(--font-size-lg);
+  }
+  .articles-empty__text {
+    margin: 0 0 var(--space-3);
+    opacity: 0.85;
+    line-height: 1.7;
+  }
+  .articles-empty__link {
+    text-decoration: none;
+  }
+  .articles-empty__link:hover,
+  .articles-empty__link:focus-visible {
+    text-decoration: underline;
+    text-decoration-color: var(--sms-accent);
+    text-underline-offset: 0.18em;
+  }
+</style>
