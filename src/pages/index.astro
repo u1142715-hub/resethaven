@@ -81,25 +81,26 @@ const featuredArtworks = [
 
 <BaseLayout
   title="ResetHaven"
-  description="Life Improvement Plan."
+  description="A practical life stabilisation system: small steps, clear structure, less overwhelm."
 >
   <!-- HERO -->
   <section class="hero">
     <div class="container hero__inner">
       <div>
-        <div class="hero__kicker">Reset Haven</div>
+        <div class="hero__kicker">ResetHaven</div>
         <h1 class="hero__title">
-          Steps to change your life forever
+          Calm your life down. Then rebuild—one small step at a time.
         </h1>
         <p class="hero__subtitle">
-          Sensible, balanced, and highly effective.
+          A phone-friendly, low-pressure system designed for real life: tired days, messy days, and days where thinking is hard.
         </p>
         <p class="hero__subtitle">
-         Each Module is developed logically to feel like you accomplished something useful.        </p>
+          You don’t need motivation. You just need the next safe step—clear, small, and doable.
+        </p>
         <div class="hero__actions">
           <a class="btn btn--primary btn--block-mobile" href={`${base}LifeResetPro/`}>Quick Start</a>
           <a class="btn btn--ghost btn--block-mobile" href={`${base}articles/`}>Learn More</a>
-          <a class="btn btn--ghost btn--block-mobile" href={`${base}about/`}>About the ResetHaven</a>
+          <a class="btn btn--ghost btn--block-mobile" href={`${base}about/`}>About ResetHaven</a>
         </div>
 
         <div class="hero__meta">
@@ -110,16 +111,16 @@ const featuredArtworks = [
       <div class="hero__media">
         <div class="hero__media-inner">
           <div class="card">
-            <div class="card__eyebrow">How To Start</div>
-            <div class="card__title">The Origin Forms</div>
+            <div class="card__eyebrow">How it works</div>
+            <div class="card__title">A stabilisation-first reset</div>
             <p class="card__body">
-              A first release defined by restraint, balance, and subtle visual tension—composed to feel complete without immediate resolution. Each work sits confidently in space, rewarding sustained attention rather than instant comprehension.
+              This is not “hustle productivity.” It’s a gentle structure that reduces overwhelm by shrinking the horizon and making the next action obvious.
             </p>
             <p class="card__body">
-              Alongside the flagship Origin Forms, the studio is expanding with Quiet Resilience—a composed figurative series exploring calm endurance and emotional gravity.
+              Expect clear prompts, small resets, and simple loops you can return to whenever life gets heavy—without needing perfect discipline to maintain it.
             </p>
             <div class="mt-2">
-              <a class="btn btn--subtle btn--block" href={`${base}LifeResetPro/`}>View featured works</a>
+              <a class="btn btn--subtle btn--block" href={`${base}LifeResetPro/`}>See the Quick Start</a>
             </div>
           </div>
         </div>
@@ -131,31 +132,29 @@ const featuredArtworks = [
   <Section variant="alt">
     <div class="container">
       <div class="section__heading">
-        <div class="section__eyebrow">Why collectors respond</div>
-        <h2 class="section__title">Scarcity through judgement, not output volume.</h2>
+        <div class="section__eyebrow">Why this works</div>
+        <h2 class="section__title">Clarity without shame. Momentum without overload.</h2>
       </div>
 
       <div class="grid grid--3">
         <div class="card">
-          <div class="card__title">Deliberate visual resolution</div>
+          <div class="card__title">Tiny actions that actually finish</div>
           <p class="card__body">
-           Each work is brought to a point where it feels complete as a whole. 
-           Coherence is prioritised over novelty, allowing the image to hold attention without excess.
+            When everything feels urgent, the brain freezes. The system pulls you back into motion with small actions that are clearly “done” once completed.
           </p>
         </div>
 
         <div class="card">
-          <div class="card__title">Restraint as a signature</div>
+          <div class="card__title">A short horizon you can hold</div>
           <p class="card__body">
-            Precision without coldness; complexity without noise. 
-            The work reveals itself gradually rather than competing for attention.
+            Instead of vague “someday” pressure, you work inside simple windows that reduce panic and decision-fatigue: today, tomorrow, and the next 72 hours.
           </p>
         </div>
 
         <div class="card">
-          <div class="card__title">Collector-ready presentation</div>
+          <div class="card__title">Stabilisers for real-world stress</div>
           <p class="card__body">
-            Clear framing, consistent editions, and a focused acquisition path that keeps attention on the work itself.
+            Money, home, admin, supports, and mindset—handled as calm, contained stabilisers that lower avoidance and help you feel in control again.
           </p>
         </div>
       </div>
@@ -166,15 +165,17 @@ const featuredArtworks = [
   <Section>
     <div class="container">
       <div class="section__heading">
-        <div class="section__eyebrow">Featured works</div>
-        <h2 class="section__title">A small selection from the studio’s current limited-edition collections</h2>
+        <div class="section__eyebrow">Visual atmosphere</div>
+        <h2 class="section__title">A calm, curated tone—built for focus, not noise</h2>
       </div>
 
-      <ArtworkCarousel artworks={featuredArtworks} label="Featured works from The Origin Forms" />
+      <ArtworkCarousel artworks={featuredArtworks} label="Calm visual cues to support a stabilisation-first reset" />
 
       <div class="mt-3 text-center">
-        <a class="btn btn--primary btn--block-mobile" href={`${base}LifeResetPro/`}>Explore the full presentation</a>
-        <a class="btn btn--ghost btn--block-mobile" href={`${base}provenance/`}>Provenance & authenticity</a>
+        <a class="btn btn--primary btn--block-mobile" href={`${base}LifeResetPro/`}>Start the reset</a>
+        <a class="btn btn--ghost btn--block-mobile" href={DOWNLOAD_URL} target="_blank" rel="noopener noreferrer">
+          Get it on Gumroad
+        </a>
       </div>
     </div>
   </Section>
@@ -183,30 +184,26 @@ const featuredArtworks = [
   <Section variant="alt">
     <div class="container">
       <div class="cta">
-        <div class="cta__eyebrow">Collect</div>
-        <div class="cta__title">Explore availability and purchase securely through Saatchi Art.</div>
+        <div class="cta__eyebrow">Get started</div>
+        <div class="cta__title">Begin with Quick Start, then build stability across the areas that matter.</div>
         <p class="cta__body">
-          The art page is the canonical presentation. Saatchi Art handles secure checkout, edition enforcement, and delivery.
+          If you’re overloaded, start small. If you’re ready, continue into the full system at your own pace. Either way, the goal is the same: reduce chaos, regain clarity, and take the next safe step.
         </p>
 
         <div class="mt-2">
-          <a class="btn btn--primary btn--block-mobile" href={`${base}art/`}>Go to the art page</a>
+          <a class="btn btn--primary btn--block-mobile" href={`${base}LifeResetPro/`}>Go to Quick Start</a>
           <a
             class="btn btn--ghost btn--block-mobile"
-            href={SAATCHI_PROFILE_URL}
+            href={DOWNLOAD_URL}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Saatchi Art profile
+            Secure checkout on Gumroad
           </a>
         </div>
 
         <p class="cta__body" style="margin-top: 1rem; opacity: 0.85;">
-          Separately, the studio also maintains a print-on-demand shop on{" "}
-          <a href="https://www.redbubble.com/people/SamFrederiksen/shop" target="_blank" rel="noopener noreferrer">
-            Redbubble
-          </a>
-          {" "}featuring distinct designs created specifically for that format.
+          ResetHaven is designed to feel calm, clear, and structured—without the “perfect life” performance. It’s a practical system for days when your capacity is limited.
         </p>
       </div>
     </div>
@@ -217,8 +214,8 @@ const featuredArtworks = [
     <Section>
       <div class="container">
         <div class="section__heading">
-          <div class="section__eyebrow">Studio notes</div>
-          <h2 class="section__title">Context that routes back to the work.</h2>
+          <div class="section__eyebrow">Notes & guidance</div>
+          <h2 class="section__title">Short ideas that support stability and follow-through.</h2>
         </div>
 
         <ArticleList articles={articles} />
