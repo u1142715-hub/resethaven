@@ -3,7 +3,7 @@ title: "Why Some Images Make You Pause Without Knowing Why"
 description: "A look at visual attention, second-look imagery, and why certain images quietly hold focus without explanation."
 publishedAt: 2025-12-24
 topicCluster: "Visual Perception"
-targetLandingPage: "art"
+targetLandingPage: "LifeResetPro"
 ---
 
 ## The Moment You Stop Scrolling
