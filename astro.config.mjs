@@ -2,7 +2,8 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://github.com/u1142715-hub/resethaven/",
+  site: "https://u1142715-hub.github.io/resethaven/",
+
   base: "/resethaven",
 
   trailingSlash: "always",
