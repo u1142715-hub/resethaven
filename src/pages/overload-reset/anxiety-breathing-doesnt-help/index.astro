@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import LandingLayout from "../../../layouts/LandingLayout.astro";
+
+const base = import.meta.env.BASE_URL || "/";
+const HUB_URL = `${base}overload-reset/`;
+
+const TITLE = "Anxiety but Breathing Doesn’t Help? Use This Instead";
+const DESCRIPTION =
+  "Action-based grounding for anxiety when breathing and meditation make it worse. Clear steps, no rituals.";
+---
+
+<BaseLayout title={TITLE} description={DESCRIPTION}>
+  <LandingLayout>
+    <main class="content">
+      <header class="section">
+        <p class="kicker">
+          <a href={HUB_URL}>← Overload Reset hub</a>
+        </p>
+        <h1>{TITLE}</h1>
+        <p>
+          If breathing exercises increase pressure or don’t work for you, don’t force them. Use the steps below and keep it small.
+        </p>
+      </header>
+
+      <section class="section">
+        <h2>Do this first (60 seconds)</h2>
+        <ol>
+          <li><strong>Stop the ritual loop:</strong> decide you will not “try to calm down” for the next 10 minutes.</li>
+          <li><strong>External anchor:</strong> pick one physical object you can see and name 3 factual details about it.</li>
+          <li><strong>One stabilising action:</strong> choose a tiny task that ends cleanly (2 minutes max).</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>Action-based grounding (5 steps)</h2>
+        <ol>
+          <li><strong>Name the pattern:</strong> “My system is alarmed. I don’t have to fix feelings first.”</li>
+          <li><strong>Reduce inputs:</strong> remove one trigger input (news/tab/audio/message thread).</li>
+          <li><strong>Contain the horizon:</strong> pick one of these time windows: 10 minutes or 60 minutes. Nothing beyond.</li>
+          <li><strong>Micro-completion:</strong> do one “done” action (send one reply, pay one small bill, clear one surface, start one load of washing).</li>
+          <li><strong>Stop and reassess:</strong> after completion, ask: “Do I need another step, or do I stop now?”</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>Bad-day version (minimum viable)</h2>
+        <p>
+          If you’re too activated: do only Step 2 (reduce one input) and Step 4 (micro-completion). Then stop.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Default exit</h2>
+        <p>
+          If you’re still escalating after 10 minutes, return to the hub and choose a different reset (work reset, freeze reset, or one-page reset).
+        </p>
+        <p class="note"><strong>Save this page.</strong> Use it when breathing loops don’t help.</p>
+      </section>
+
+      <footer class="section">
+        <p><a href={HUB_URL}>Not sure which reset you need? Go back to the Overload Reset hub.</a></p>
+      </footer>
+    </main>
+  </LandingLayout>
+</BaseLayout>
+
+<style>
+  .content { max-width: 900px; margin: 0 auto; }
+  .section { margin: 2rem 0; }
+  .kicker { margin: 0 0 1rem; }
+  .note { margin-top: 1rem; }
+</style>
