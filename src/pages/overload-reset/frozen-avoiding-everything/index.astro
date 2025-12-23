@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import LandingLayout from "../../../layouts/LandingLayout.astro";
+
+const base = import.meta.env.BASE_URL || "/";
+const HUB_URL = `${base}overload-reset/`;
+
+const TITLE = "Frozen and Avoiding Everything? Start Here";
+const DESCRIPTION =
+  "A freeze-breaker reset with minimal steps and permission-based exits. No motivation talk. No pressure.";
+---
+
+<BaseLayout title={TITLE} description={DESCRIPTION}>
+  <LandingLayout>
+    <main class="content">
+      <header class="section">
+        <p class="kicker">
+          <a href={HUB_URL}>← Overload Reset hub</a>
+        </p>
+        <h1>{TITLE}</h1>
+        <p>
+          If you feel stuck, numb, or avoiding everything, don’t push. Use the steps below to create one safe movement, then stop.
+        </p>
+      </header>
+
+      <section class="section">
+        <h2>Do this first (30–60 seconds)</h2>
+        <ol>
+          <li><strong>Name the state:</strong> say “This is a freeze response.”</li>
+          <li><strong>Lower the bar:</strong> decide the next action can be imperfect and tiny.</li>
+          <li><strong>One physical shift:</strong> stand up, sit down, or change rooms.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>The freeze-breaker (5 steps)</h2>
+        <ol>
+          <li><strong>Contain time:</strong> commit to 5 minutes only.</li>
+          <li><strong>Choose a neutral task:</strong> something with no emotional weight.</li>
+          <li><strong>Micro-complete:</strong> finish one small, clearly “done” action.</li>
+          <li><strong>Pause deliberately:</strong> stop after completion; don’t chain tasks.</li>
+          <li><strong>Decide next:</strong> either stop for now or return to the hub.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>Bad-day version (minimum viable)</h2>
+        <p>
+          If movement feels hard: change posture and name one object you can see. That counts as progress today.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Default exit</h2>
+        <p>
+          If you remain stuck, return to the hub and choose “One-Page Reset” or “Overwhelmed and Can’t Think.”
+        </p>
+        <p class="note"><strong>Save this page.</strong> Use it when avoidance takes over.</p>
+      </section>
+
+      <footer class="section">
+        <p><a href={HUB_URL}>Not sure which reset you need? Go back to the Overload Reset hub.</a></p>
+      </footer>
+    </main>
+  </LandingLayout>
+</BaseLayout>
+
+<style>
+  .content { max-width: 900px; margin: 0 auto; }
+  .section { margin: 2rem 0; }
+  .kicker { margin: 0 0 1rem; }
+  .note { margin-top: 1rem; }
+</style>
