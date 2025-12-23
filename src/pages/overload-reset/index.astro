@@ -1,0 +1,187 @@
+---
+// File: src/pages/overload-reset/index.astro
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LandingLayout from "../../layouts/LandingLayout.astro";
+
+const base = import.meta.env.BASE_URL || "/";
+
+/**
+ * Overload Reset Cluster Hub
+ * Purpose: fast routing + strong topical authority signal
+ * Notes:
+ * - Keep this page light (no heavy components).
+ * - This hub should be linked from all 10 pages as the canonical “router”.
+ */
+const routes = [
+  {
+    state: "I’m overwhelmed and can’t think",
+    href: `${base}overload-reset/overwhelmed-cant-think/`,
+    desc: "Immediate cognitive reset with the smallest safe next steps.",
+  },
+  {
+    state: "Breathing / meditation doesn’t help",
+    href: `${base}overload-reset/anxiety-breathing-doesnt-help/`,
+    desc: "Action-based grounding that avoids rituals and breathing loops.",
+  },
+  {
+    state: "I’m at work and can’t stop",
+    href: `${base}overload-reset/mental-reset-at-work/`,
+    desc: "A reset you can do mid-task without leaving your desk.",
+  },
+  {
+    state: "Too many decisions, brain is fried",
+    href: `${base}overload-reset/decision-fatigue-next-10-minutes/`,
+    desc: "A 10-minute decision-offload protocol that ends spirals fast.",
+  },
+  {
+    state: "Task lists make it worse",
+    href: `${base}overload-reset/dont-organise-tasks-when-overwhelmed/`,
+    desc: "Stabilise first, then organise. Prevents overload amplification.",
+  },
+  {
+    state: "Life admin is overwhelming",
+    href: `${base}overload-reset/life-admin-overwhelm-reset/`,
+    desc: "A 15-minute admin triage that creates one visible win.",
+  },
+  {
+    state: "I’m frozen and avoiding everything",
+    href: `${base}overload-reset/frozen-avoiding-everything/`,
+    desc: "A freeze-breaker sequence with zero motivational framing.",
+  },
+  {
+    state: "I’m burned out but still responsible",
+    href: `${base}overload-reset/burnout-with-responsibilities-reset/`,
+    desc: "A reset for burnout under constraint (no rest fantasy).",
+  },
+  {
+    state: "I just need a one-page reset",
+    href: `${base}overload-reset/one-page-reset-brain-shuts-down/`,
+    desc: "A bookmarkable tool page for shutdown moments.",
+  },
+  {
+    state: "Meditation makes this worse",
+    href: `${base}overload-reset/what-to-do-instead-of-meditation/`,
+    desc: "A clear alternative path when meditation increases pressure.",
+  },
+];
+---
+
+<BaseLayout title="Overload Reset: What to Do When You’re Overwhelmed and Can’t Think">
+  <LandingLayout>
+    <main class="content">
+      <header class="section">
+        <h1>Overload Reset</h1>
+        <p>
+          <strong>If your brain feels overloaded and you don’t know what to do next, start here.</strong>
+          This hub routes you to the right reset based on how stuck you are — not how you’re supposed to feel.
+        </p>
+        <p>
+          No breathing exercises. No productivity systems. No pressure to “calm down.”
+          Just the next safe step.
+        </p>
+      </header>
+
+      <section class="section">
+        <h2>Pick the one that matches you right now</h2>
+
+        <!-- Lightweight routing table (fast, scan-friendly) -->
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">State</th>
+                <th scope="col">Start here</th>
+              </tr>
+            </thead>
+            <tbody>
+              {routes.map((r) => (
+                <tr>
+                  <td>{r.state}</td>
+                  <td>
+                    <a href={r.href}>
+                      Open reset
+                      <span class="sr-only">: {r.state}</span>
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="note">
+          Save this page. Use it when your brain shuts down.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>What this hub is (and is not)</h2>
+        <ul>
+          <li><strong>This is:</strong> action-based resets for overload, decision fatigue, shutdown, and burnout.</li>
+          <li><strong>This is not:</strong> meditation training, habit building, or productivity optimisation.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Not sure what you need?</h2>
+        <ol>
+          <li>If you can’t think: start with <a href={routes[0].href}>Overwhelmed and Can’t Think</a>.</li>
+          <li>If breathing makes you worse: use <a href={routes[1].href}>Anxiety but Breathing Doesn’t Help</a>.</li>
+          <li>If you’re frozen: use <a href={routes[6].href}>Frozen and Avoiding Everything</a>.</li>
+        </ol>
+      </section>
+    </main>
+  </LandingLayout>
+</BaseLayout>
+
+<style>
+  /* Minimal, non-invasive helpers. Uses existing site typography + tokens. */
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section {
+    margin: 2rem 0;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 0.75rem 0.5rem;
+    vertical-align: top;
+  }
+
+  thead th {
+    border-bottom: 1px solid currentColor;
+  }
+
+  tbody tr + tr td {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .note {
+    margin-top: 1rem;
+  }
+
+  /* Screen-reader helper */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
