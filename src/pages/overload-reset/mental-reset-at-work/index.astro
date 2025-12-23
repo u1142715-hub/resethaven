@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import LandingLayout from "../../../layouts/LandingLayout.astro";
+
+const base = import.meta.env.BASE_URL || "/";
+const HUB_URL = `${base}overload-reset/`;
+
+const TITLE = "Mental Reset at Work (Without Stopping, Meditating, or Closing Tabs)";
+const DESCRIPTION =
+  "A discreet reset you can run mid-task at work. No pause rituals. Just a fast stability sequence.";
+---
+
+<BaseLayout title={TITLE} description={DESCRIPTION}>
+  <LandingLayout>
+    <main class="content">
+      <header class="section">
+        <p class="kicker">
+          <a href={HUB_URL}>← Overload Reset hub</a>
+        </p>
+        <h1>{TITLE}</h1>
+        <p>
+          This reset is designed for moments where you cannot stop, leave, or “take a break.” Use it mid-task and keep it contained.
+        </p>
+      </header>
+
+      <section class="section">
+        <h2>Do this first (30–60 seconds)</h2>
+        <ol>
+          <li><strong>Reduce noise:</strong> close one non-essential tab/window or mute one notification source.</li>
+          <li><strong>Single focus target:</strong> write one line: “For the next 10 minutes, I do ____.”</li>
+          <li><strong>Minimum next action:</strong> choose the smallest visible step of that task and start it immediately.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>The work reset (5 steps)</h2>
+        <ol>
+          <li><strong>Contain time:</strong> set a 10-minute timer (or check the clock and commit to 10 minutes only).</li>
+          <li><strong>Strip the task:</strong> remove all sub-tasks. Keep only the current step.</li>
+          <li><strong>Micro-output:</strong> produce one small deliverable (one paragraph, one reply, one line item, one file saved).</li>
+          <li><strong>Stabilise the queue:</strong> write a 3-item parking list of everything else pulling at you. Don’t act on it.</li>
+          <li><strong>Stop and decide:</strong> at 10 minutes, choose one: continue 10 more minutes, or stop and return to the hub.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>Bad-day version (minimum viable)</h2>
+        <p>
+          If you’re flooded: do only Step 2 (strip the task) and Step 3 (micro-output). Then stop.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Default exit</h2>
+        <p>
+          If you still can’t start after 10 minutes, return to the hub and use either “Overwhelmed and Can’t Think” or “Frozen and Avoiding Everything.”
+        </p>
+        <p class="note"><strong>Save this page.</strong> Use it when you can’t stop but you need stability.</p>
+      </section>
+
+      <footer class="section">
+        <p><a href={HUB_URL}>Not sure which reset you need? Go back to the Overload Reset hub.</a></p>
+      </footer>
+    </main>
+  </LandingLayout>
+</BaseLayout>
+
+<style>
+  .content { max-width: 900px; margin: 0 auto; }
+  .section { margin: 2rem 0; }
+  .kicker { margin: 0 0 1rem; }
+  .note { margin-top: 1rem; }
+</style>
