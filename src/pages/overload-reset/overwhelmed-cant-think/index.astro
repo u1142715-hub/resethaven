@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import LandingLayout from "../../../layouts/LandingLayout.astro";
+
+const base = import.meta.env.BASE_URL || "/";
+const HUB_URL = `${base}overload-reset/`;
+
+const TITLE = "Overwhelmed and Can’t Think? Do This First (No Breathing, No Meditation)";
+const DESCRIPTION =
+  "A fast, action-based reset for cognitive overload when thinking collapses. No rituals. Just the next safe step.";
+---
+
+<BaseLayout title={TITLE} description={DESCRIPTION}>
+  <LandingLayout>
+    <main class="content">
+      <header class="section">
+        <p class="kicker">
+          <a href={HUB_URL}>← Overload Reset hub</a>
+        </p>
+        <h1>{TITLE}</h1>
+        <p>
+          If you can’t think clearly right now, do not add more information. Use the steps below, then stop.
+        </p>
+      </header>
+
+      <section class="section">
+        <h2>Do this first (60 seconds)</h2>
+        <ol>
+          <li><strong>Reduce inputs:</strong> silence one source (notifications, audio, or one tab).</li>
+          <li><strong>One anchor sentence:</strong> write: “The next safe step is ____.”</li>
+          <li><strong>One micro-action:</strong> do a task you can finish in under 2 minutes.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>The reset (5 steps)</h2>
+        <ol>
+          <li><strong>Name the state:</strong> “This is overload. My brain is saturated.”</li>
+          <li><strong>Delay one decision:</strong> pick one thing you are allowed to delay 24 hours.</li>
+          <li><strong>Pick one stabiliser:</strong> money / admin / home / health (only one).</li>
+          <li><strong>Complete one small win:</strong> one clearly “done” action.</li>
+          <li><strong>Stop early on purpose:</strong> end after that win. Do not expand the plan.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>Bad-day version (minimum viable)</h2>
+        <p>
+          If you can’t do the full reset: do Step 1 (name the state) and Step 4 (one small win). Then stop.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Default exit</h2>
+        <p>
+          If you still feel stuck after 10 minutes, return to the hub and choose a different reset that matches your state.
+        </p>
+        <p class="note"><strong>Save this page.</strong> Use it when your brain shuts down.</p>
+      </section>
+
+      <footer class="section">
+        <p><a href={HUB_URL}>Not sure which reset you need? Go back to the Overload Reset hub.</a></p>
+      </footer>
+    </main>
+  </LandingLayout>
+</BaseLayout>
+
+<style>
+  .content { max-width: 900px; margin: 0 auto; }
+  .section { margin: 2rem 0; }
+  .kicker { margin: 0 0 1rem; }
+  .note { margin-top: 1rem; }
+</style>
