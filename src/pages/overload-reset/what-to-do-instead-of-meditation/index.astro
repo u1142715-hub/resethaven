@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import LandingLayout from "../../../layouts/LandingLayout.astro";
+
+const base = import.meta.env.BASE_URL || "/";
+const HUB_URL = `${base}overload-reset/`;
+
+const TITLE = "What to Do Instead of Meditation When You’re Overloaded";
+const DESCRIPTION =
+  "Clear alternatives when meditation increases pressure. Action-first resets that restore stability without rituals.";
+---
+
+<BaseLayout title={TITLE} description={DESCRIPTION}>
+  <LandingLayout>
+    <main class="content">
+      <header class="section">
+        <p class="kicker">
+          <a href={HUB_URL}>← Overload Reset hub</a>
+        </p>
+        <h1>{TITLE}</h1>
+        <p>
+          If meditation makes you feel worse, pressured, or more stuck, don’t force it. Use an action-first reset instead.
+        </p>
+      </header>
+
+      <section class="section">
+        <h2>Do this first (60 seconds)</h2>
+        <ol>
+          <li><strong>Stop the “should”:</strong> decide you will not attempt meditation right now.</li>
+          <li><strong>Reduce inputs:</strong> remove one trigger source (audio, notifications, one tab).</li>
+          <li><strong>Pick one anchor:</strong> write: “The next safe step is ____.”</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>Action-first alternatives (5 steps)</h2>
+        <ol>
+          <li><strong>Name the need:</strong> “I need stability, not a practice.”</li>
+          <li><strong>Contain time:</strong> commit to 10 minutes only.</li>
+          <li><strong>Choose one stabiliser:</strong> money / admin / home / health (only one).</li>
+          <li><strong>Micro-complete:</strong> finish one small, clearly ‘done’ action.</li>
+          <li><strong>Stop deliberately:</strong> end after completion. No expansion.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>Bad-day version (minimum viable)</h2>
+        <p>
+          If you’re too overloaded: do Step 2 (reduce one input) and Step 4 (one micro-completion). Then stop.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Default exit</h2>
+        <p>
+          If you still feel stuck, return to the hub and choose “Overwhelmed and Can’t Think” or “One-Page Reset.”
+        </p>
+        <p class="note"><strong>Save this page.</strong> Use it when meditation increases pressure.</p>
+      </section>
+
+      <footer class="section">
+        <p><a href={HUB_URL}>Not sure which reset you need? Go back to the Overload Reset hub.</a></p>
+      </footer>
+    </main>
+  </LandingLayout>
+</BaseLayout>
+
+<style>
+  .content { max-width: 900px; margin: 0 auto; }
+  .section { margin: 2rem 0; }
+  .kicker { margin: 0 0 1rem; }
+  .note { margin-top: 1rem; }
+</style>
