@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import LandingLayout from "../../../layouts/LandingLayout.astro";
+
+const base = import.meta.env.BASE_URL || "/";
+const HUB_URL = `${base}overload-reset/`;
+
+const TITLE = "Burned Out but Still Have Responsibilities? This Is the Reset";
+const DESCRIPTION =
+  "A reset for burnout under constraint. Stabilise without pretending you can rest or escape. Small steps only.";
+---
+
+<BaseLayout title={TITLE} description={DESCRIPTION}>
+  <LandingLayout>
+    <main class="content">
+      <header class="section">
+        <p class="kicker">
+          <a href={HUB_URL}>← Overload Reset hub</a>
+        </p>
+        <h1>{TITLE}</h1>
+        <p>
+          If you’re exhausted but still have to function, don’t aim to recover everything. Use this to stabilise just enough, then stop.
+        </p>
+      </header>
+
+      <section class="section">
+        <h2>Do this first (60 seconds)</h2>
+        <ol>
+          <li><strong>Acknowledge constraint:</strong> say “Rest isn’t fully available right now.”</li>
+          <li><strong>Lower the scope:</strong> choose one responsibility that must be touched today.</li>
+          <li><strong>Define ‘enough’:</strong> write one line describing the minimum acceptable outcome.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>The stabilising reset (5 steps)</h2>
+        <ol>
+          <li><strong>Name the state:</strong> “This is burnout under load.”</li>
+          <li><strong>Time-box:</strong> commit to 10 minutes only.</li>
+          <li><strong>Strip the task:</strong> remove all extras; keep the single next step.</li>
+          <li><strong>Micro-output:</strong> produce one small, clearly ‘done’ result.</li>
+          <li><strong>Stop deliberately:</strong> end at time. Do not add more.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>Bad-day version (minimum viable)</h2>
+        <p>
+          If energy is very low: open the task, set the timer, and do one visible mark of progress. Then stop.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Default exit</h2>
+        <p>
+          If pressure increases, return to the hub and choose “One-Page Reset” or “Mental Reset at Work.”
+        </p>
+        <p class="note"><strong>Save this page.</strong> Use it when you’re exhausted but can’t stop.</p>
+      </section>
+
+      <footer class="section">
+        <p><a href={HUB_URL}>Not sure which reset you need? Go back to the Overload Reset hub.</a></p>
+      </footer>
+    </main>
+  </LandingLayout>
+</BaseLayout>
+
+<style>
+  .content { max-width: 900px; margin: 0 auto; }
+  .section { margin: 2rem 0; }
+  .kicker { margin: 0 0 1rem; }
+  .note { margin-top: 1rem; }
+</style>
