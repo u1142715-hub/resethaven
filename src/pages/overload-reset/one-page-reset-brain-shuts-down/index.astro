@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import LandingLayout from "../../../layouts/LandingLayout.astro";
+
+const base = import.meta.env.BASE_URL || "/";
+const HUB_URL = `${base}overload-reset/`;
+
+const TITLE = "A One-Page Reset for When Your Brain Shuts Down";
+const DESCRIPTION =
+  "A bookmarkable shutdown reset: minimal steps, fast completion, and a built-in exit. No rituals.";
+---
+
+<BaseLayout title={TITLE} description={DESCRIPTION}>
+  <LandingLayout>
+    <main class="content">
+      <header class="section">
+        <p class="kicker">
+          <a href={HUB_URL}>← Overload Reset hub</a>
+        </p>
+        <h1>{TITLE}</h1>
+        <p>
+          Use this when your mind goes blank and you can’t decide what to do. Follow the list once, then stop.
+        </p>
+      </header>
+
+      <section class="section">
+        <h2>The one-page reset</h2>
+        <ol>
+          <li><strong>Name it:</strong> “My brain is shut down. This is overload.”</li>
+          <li><strong>Reduce input:</strong> silence one notification or close one tab.</li>
+          <li><strong>Anchor:</strong> write one line: “The next safe step is ____.”</li>
+          <li><strong>Micro-complete:</strong> finish one 1–2 minute action.</li>
+          <li><strong>Stop:</strong> end here. Do not expand.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>Bad-day version</h2>
+        <p>
+          If even this feels like too much: do Step 1 (name it) and Step 4 (one tiny action). That is enough today.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Default exit</h2>
+        <p>
+          If you need a different angle, return to the hub and choose a reset that better matches your state.
+        </p>
+        <p class="note"><strong>Save this page.</strong> It’s designed to be reused.</p>
+      </section>
+
+      <footer class="section">
+        <p><a href={HUB_URL}>Not sure which reset you need? Go back to the Overload Reset hub.</a></p>
+      </footer>
+    </main>
+  </LandingLayout>
+</BaseLayout>
+
+<style>
+  .content { max-width: 900px; margin: 0 auto; }
+  .section { margin: 2rem 0; }
+  .kicker { margin: 0 0 1rem; }
+  .note { margin-top: 1rem; }
+</style>
