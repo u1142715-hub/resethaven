@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import LandingLayout from "../../../layouts/LandingLayout.astro";
+
+const base = import.meta.env.BASE_URL || "/";
+const HUB_URL = `${base}overload-reset/`;
+
+const TITLE = "Overwhelmed by Life Admin? Use This 15-Minute Reset";
+const DESCRIPTION =
+  "A short admin triage that creates one visible win and reduces avoidance. No planning systems. No optimisation.";
+---
+
+<BaseLayout title={TITLE} description={DESCRIPTION}>
+  <LandingLayout>
+    <main class="content">
+      <header class="section">
+        <p class="kicker">
+          <a href={HUB_URL}>← Overload Reset hub</a>
+        </p>
+        <h1>{TITLE}</h1>
+        <p>
+          If paperwork, emails, bills, or forms are piling up, don’t try to catch up. Use this contained reset and stop.
+        </p>
+      </header>
+
+      <section class="section">
+        <h2>Do this first (60 seconds)</h2>
+        <ol>
+          <li><strong>Contain the pile:</strong> choose one small subset (one envelope, one email thread, one form).</li>
+          <li><strong>Set a hard limit:</strong> decide you will stop after 15 minutes.</li>
+          <li><strong>Define “done”:</strong> write one sentence describing what “finished” looks like.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>The 15-minute admin reset (5 steps)</h2>
+        <ol>
+          <li><strong>Name the state:</strong> “This is admin overload, not failure.”</li>
+          <li><strong>Strip scope:</strong> ignore everything outside the chosen subset.</li>
+          <li><strong>One decision only:</strong> act, file, pay, reply, or schedule—pick one.</li>
+          <li><strong>Micro-complete:</strong> finish the smallest action that closes the loop.</li>
+          <li><strong>Stop deliberately:</strong> when 15 minutes ends, stop—even if more remains.</li>
+        </ol>
+      </section>
+
+      <section class="section">
+        <h2>Bad-day version (minimum viable)</h2>
+        <p>
+          If energy is very low: open the item, read it once, and place it back neatly. That counts as done today.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Default exit</h2>
+        <p>
+          If pressure spikes, return to the hub and choose “Frozen and Avoiding Everything” or “One-Page Reset.”
+        </p>
+        <p class="note"><strong>Save this page.</strong> Use it when admin feels impossible.</p>
+      </section>
+
+      <footer class="section">
+        <p><a href={HUB_URL}>Not sure which reset you need? Go back to the Overload Reset hub.</a></p>
+      </footer>
+    </main>
+  </LandingLayout>
+</BaseLayout>
+
+<style>
+  .content { max-width: 900px; margin: 0 auto; }
+  .section { margin: 2rem 0; }
+  .kicker { margin: 0 0 1rem; }
+  .note { margin-top: 1rem; }
+</style>
